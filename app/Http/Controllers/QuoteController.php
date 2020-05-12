@@ -10,12 +10,13 @@ class QuoteController extends Controller
 
     public function index()
     {
-        return Quote::all();
+        return Quote::with('comments')->get();
     }
 
     public function show($id)
     {
-        $quote = Quote::find($id);
+        // $quote = Quote::find($id);
+        $quote = Quote::with('comments')->where('id', $id)->first();
 
         if (!$quote) {
 

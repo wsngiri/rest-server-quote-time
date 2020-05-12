@@ -18,7 +18,7 @@ Route::group(['middleware' => ['api']], function () {
         Route::delete('/quote/{id}', 'QuoteController@destroy');
 
         //Comment
-        Route::post('/comment', 'CommentController@create');
+        Route::post('/comment/{id_quote}', 'CommentController@create');
     });
     
 });
