@@ -26,4 +26,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function quotes ()
+    {
+        return $this->hasMany('App\Models\Quote');
+        
+    }
 }
