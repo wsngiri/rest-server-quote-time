@@ -8,6 +8,7 @@ Route::group(['middleware' => ['api']], function () {
     Route::get('/quote', 'QuoteController@index');
     Route::get('/quote/{id}', 'QuoteController@show');
 
+
     Route::group(['middleware' => ['jwt.auth']], function () {
 
         Route::get('/profile', 'UserController@show');
@@ -19,6 +20,9 @@ Route::group(['middleware' => ['api']], function () {
 
         //Comment
         Route::post('/comment/{id_quote}', 'CommentController@create');
+
+        //
+        Route::get('/myquote/{id}', 'UserController@showquote');
     });
     
 });

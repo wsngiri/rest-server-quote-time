@@ -10,7 +10,7 @@ class QuoteController extends Controller
 
     public function index()
     {
-        return Quote::with('comments')->get();
+        return Quote::get();
     }
 
     public function show($id)
@@ -61,6 +61,10 @@ class QuoteController extends Controller
     public function destroy(Request $request, $id)
     {
         $qt = Quote::find($id);
+            
+        if (!$qt) {
+            return response(['message'=>'id quote not found'],403);
+        }
 
         if ($request->user()->id != $qt->user_id) {
             return response(['message'=>'dont have permissions to delete this quote'],403);
